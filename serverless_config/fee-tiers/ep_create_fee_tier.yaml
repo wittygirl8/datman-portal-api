@@ -1,0 +1,7 @@
+handler: services/fee-tiers/handler.createFeeTier
+events:
+  - http:
+      path: portal/fee-tier
+      method: post
+      authorizer: authorize 
+      cors: true

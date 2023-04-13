@@ -1,0 +1,5 @@
+handler: services/ivr/handlers/withdrawal-status-handler.withdrawalStatus
+events:
+- http:
+    path: portal/ivr/withdrawal-status
+    method: post

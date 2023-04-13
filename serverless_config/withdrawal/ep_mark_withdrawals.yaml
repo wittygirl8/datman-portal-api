@@ -1,0 +1,7 @@
+handler: services/withdrawals/handlers/mark-withdrawals-handler.markWithdrawalsStatus
+events:
+  - http:
+      path: portal/withdrawals/batched
+      method: put
+      authorizer: authorizeAdmin
+      cors: true

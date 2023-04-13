@@ -1,0 +1,7 @@
+handler: services/refund/handler/refund-history-handler.refundHistory
+events:
+- http:
+    path: portal/refund/history
+    method: post
+    authorizer: authorize
+    cors: true

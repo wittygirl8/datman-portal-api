@@ -1,0 +1,11 @@
+handler: services/customer/handler.updateFeeTierIdForMerchant
+events:
+  - http:
+      path: portal/customer/fee-tier
+      method: put
+      authorizer: authorize
+      cors: true
+environment:
+  AUDIT_LOGS_QUEUE_URL:
+    "Fn::ImportValue": AuditLogsQueueFifoUrl-dev
+# in dev audit log queue should end with dev

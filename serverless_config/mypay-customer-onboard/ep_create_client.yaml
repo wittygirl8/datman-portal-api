@@ -1,0 +1,9 @@
+handler: services/mypay-customer-onboard/handler.createClient
+events:
+  - http:
+      path: portal/onboard
+      method: post
+      authorizer: authorize
+      cors: true
+
+

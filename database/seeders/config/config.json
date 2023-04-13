@@ -1,0 +1,22 @@
+{
+    "development": {
+      "dialect": "sqlite",
+      "storage": "./db.test.sqlite"
+    },
+    "test": {
+      "dialect": "sqlite",
+      "storage": ":memory:"
+    },
+    "production": {
+      "username": "root",
+      "password": "password",
+      "database": "datman",
+      "host": "127.0.0.1",
+      "dialect": "mysql",
+      "pool": {
+          "max": 5,
+          "min": 0,
+          "idle": 10000
+      }
+    }
+  }

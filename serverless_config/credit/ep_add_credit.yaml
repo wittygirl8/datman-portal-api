@@ -1,0 +1,7 @@
+handler: services/credit/handlers/add-credit-handler.addCredit
+events:
+  - http:
+      path: portal/addCredit
+      method: post
+      authorizer: authorizeSuperAdmin
+      cors: true

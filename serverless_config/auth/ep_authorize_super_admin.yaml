@@ -1,0 +1,6 @@
+handler: services/auths/handler.authorize_super_admin
+events:
+  - http:
+      path: authorizeSuperAdmin
+      method: post
+      cors: true

@@ -1,0 +1,7 @@
+handler: services/mypay/dna-redirect-handler.dnaRedirectHandler
+events:
+- http:
+    path: portal/dna-redirect/{uuid}
+    method: get
+    # authorizer: authorize
+    # cors: true

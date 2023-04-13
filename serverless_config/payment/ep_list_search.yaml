@@ -1,0 +1,10 @@
+handler: services/payments/handlers/get-transaction-by-search-handler.main
+events:
+- http:
+    path: portal/getbysearch
+    method: post
+    authorizer:
+      name: authorize
+      resultTtlInSeconds: 0
+      identityValidationExpression: .*
+    cors: true

@@ -1,0 +1,45 @@
+{
+    "definitions": {},
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "title": "withdraw",
+    "required": [
+        "account_api_key",
+        "order_id",
+        "amount",
+        "host",
+        "merchant_id"
+    ],
+    "properties": {
+        "account_api_key": {
+            "type": "string",
+            "title": "Encrypted data",
+            "pattern": "^(.*)$",
+            "example": "acct_f2421432f38fc74268abf745fa47ea6bc7d4b699e96160a330ac1d154a8920c5"
+        },
+        "amount": {
+            "type": "string",
+            "title": "Encrypted data",
+            "pattern": "^(.*)$",
+            "example": "24.09"
+        },
+        "order_id": {
+            "type": "string",
+            "title": "Encrypted data",
+            "pattern": "^(.*)$",
+            "example": "12345"
+        },
+        "host": {
+            "type": "string",
+            "title": "Encrypted data",
+            "pattern": "^(.*)$",
+            "example": "example.com"
+        },
+        "merchant_id": {
+            "type": "string",
+            "title": "Encrypted data",
+            "pattern": "^(.*)$",
+            "example": "63191212345"
+        }
+    }
+}

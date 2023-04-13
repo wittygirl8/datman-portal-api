@@ -1,0 +1,7 @@
+handler: services/contracts/handlers/update-special-rent-handler.updateSpecialRent
+events:
+  - http:
+      path: portal/contracts/specialRent
+      method: put
+      authorizer: authorizeAdmin
+      cors: true

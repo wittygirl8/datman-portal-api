@@ -1,0 +1,7 @@
+handler: services/contracts/handlers/delete-special-rent-handler.deleteSpecialRent
+events:
+  - http:
+      path: portal/contracts/specialRent
+      method: delete
+      authorizer: authorizeSuperAdmin
+      cors: true

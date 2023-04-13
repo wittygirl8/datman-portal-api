@@ -1,0 +1,8 @@
+handler: services/contracts/handlers/get-contract-handler.getContract
+events:
+  - http:
+      path: portal/contracts
+      method: get
+      authorizer: authorizeAdmin
+      cors: true
+   

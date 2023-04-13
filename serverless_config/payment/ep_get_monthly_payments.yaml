@@ -1,0 +1,7 @@
+handler: services/payments/handlers/get-monthly-payments-data.getMonthlyPaymentsHandler
+events:
+- http:
+    path: portal/monthly-payments
+    method: get
+    authorizer: authorize
+    cors: true

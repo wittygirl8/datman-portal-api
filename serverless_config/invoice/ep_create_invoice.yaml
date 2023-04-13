@@ -1,0 +1,7 @@
+handler: services/invoice/handler/create-invoice-handler.createInvoice
+events:
+- http:
+    path: portal/invoice/create
+    method: post
+    authorizer: authorizeSuperAdmin
+    cors: true

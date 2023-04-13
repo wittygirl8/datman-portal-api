@@ -1,0 +1,170 @@
+
+
+CREATE TABLE `users_w` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `first_name` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `last_name` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `email` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `phone` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `comments` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updatedAt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+
+
+
+
+CREATE TABLE `transaction` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `type` enum('VOUCHER','TOPUP','REFUND','WITHDRAW') COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `amount` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `currency` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `account_id` int(11) DEFAULT NULL,
+  `provider_id` int(11) DEFAULT NULL,
+  `state` enum('PROCESSING','OK') COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `payment_ref` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `account_id` (`account_id`),
+  KEY `provider_id` (`provider_id`),
+  CONSTRAINT `transaction_ibfk_1` FOREIGN KEY (`account_id`) REFERENCES `account` (`id`),
+  CONSTRAINT `transaction_ibfk_2` FOREIGN KEY (`provider_id`) REFERENCES `provider` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+
+
+
+CREATE TABLE `provider` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `api_key` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `country_id` int(11) DEFAULT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `host` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `country_id` (`country_id`),
+  CONSTRAINT `provider_ibfk_1` FOREIGN KEY (`country_id`) REFERENCES `country` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+
+
+CREATE TABLE `Country` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `country_name` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `iso` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `phone_code` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `inbound_phone_number` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `currency_name` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `currency_sign` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `created_by` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `country_flag_image_path` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `status` enum('ACTIVE','INACTIVE') COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+
+
+
+
+
+CREATE TABLE `country` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `country_name` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `iso` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `phone_code` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `inbound_phone_number` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `currency_name` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `currency_sign` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `created_by` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `country_flag_image_path` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `status` enum('ACTIVE','INACTIVE') COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+
+
+
+CREATE TABLE `Provider` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `api_key` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `country_id` int(11) DEFAULT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `host` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `country_id` (`country_id`),
+  CONSTRAINT `provider_ibfk_1` FOREIGN KEY (`country_id`) REFERENCES `country` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+
+CREATE TABLE `account` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `client_ref_id` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `api_key` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  `provider_id` int(11) DEFAULT NULL,
+  `account_type` enum('STORE','END_USER','INDIVIDUAL') COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `balance` decimal(10,2) DEFAULT NULL,
+  `status` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `user_id` (`user_id`),
+  KEY `provider_id` (`provider_id`),
+  CONSTRAINT `account_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users_w` (`id`),
+  CONSTRAINT `account_ibfk_2` FOREIGN KEY (`provider_id`) REFERENCES `provider` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+
+
+newnewnewnewnewnewnewnewnewnewnewnew==============newnewnewnewnewnewnewnewnewnewnewnewnew 
+
+
+
+CREATE TABLE IF NOT EXISTS `security_credentials` (`id` INTEGER(11) NOT NULL auto_increment , `access_key` VARCHAR(255) DEFAULT NULL, `secret_key` VARCHAR(255) DEFAULT NULL, `created_at` DATETIME NOT NULL, `updated_at` DATETIME NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB;
+
+CREATE TABLE IF NOT EXISTS `business_group` (`id` INTEGER(11) NOT NULL auto_increment , `name` VARCHAR(255) DEFAULT NULL, `host` VARCHAR(255) DEFAULT NULL, `security_credentials_id` INTEGER, `country_id` INTEGER, `created_at` DATETIME NOT NULL, `updated_at` DATETIME NOT NULL, PRIMARY KEY (`id`), FOREIGN KEY (`security_credentials_id`) REFERENCES `security_credentials` (`id`), FOREIGN KEY (`country_id`) REFERENCES `country` (`id`)) ENGINE=InnoDB;
+
+CREATE TABLE IF NOT EXISTS `wallet` (`id` INTEGER(11) NOT NULL auto_increment , `business_group_id` INTEGER, `balance` VARCHAR(255) DEFAULT NULL, `status` VARCHAR(255) DEFAULT NULL, `created_at` DATETIME NOT NULL, `updated_at` DATETIME NOT NULL, PRIMARY KEY (`id`), FOREIGN KEY (`business_group_id`) REFERENCES `business_group` (`id`)) ENGINE=InnoDB;
+
+
+CREATE TABLE IF NOT EXISTS `country` (`id` INTEGER(11) NOT NULL auto_increment , `country_name` VARCHAR(255) DEFAULT NULL, `iso` VARCHAR(255) DEFAULT NULL, `phone_code` VARCHAR(255) DEFAULT NULL, `inbound_phone_number` VARCHAR(255) DEFAULT NULL, `currency_name` VARCHAR(255) DEFAULT NULL, `currency_sign` VARCHAR(255) DEFAULT NULL, `created_by` VARCHAR(255) DEFAULT NULL, `country_flag_image_path` VARCHAR(255) DEFAULT NULL, `status` ENUM('ACTIVE', 'INACTIVE'), `created_at` DATETIME NOT NULL, `updated_at` DATETIME NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB;
+
+
+
+SET foreign_key_checks = 0;
+-- Drop tables
+drop table ...
+-- Drop views
+drop view ...
+SET foreign_key_checks = 1;
+
+
+CREATE TABLE `country` (
+    `id` int(11) NOT NULL AUTO_INCREMENT,
+    `country_name` varchar(150) DEFAULT NULL,
+    `iso` varchar(5) DEFAULT NULL,
+    `phone_code` int(10) DEFAULT NULL,
+    `inbound_phone_number` varchar(15) DEFAULT NULL,
+    `currency_name` varchar(50) DEFAULT NULL,
+    `currency_sign` varchar(11) DEFAULT NULL,
+    `country_flag_image_path` varchar(100) DEFAULT NULL,
+    `created_at` datetime DEFAULT NULL,
+    `created_by` varchar(50) DEFAULT NULL,
+    `status` enum('ACTIVE','INACTIVE') DEFAULT NULL,
+    PRIMARY KEY (`id`)
+  ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8
+
+
+
+  serverless openapi generate -o o.yaml

@@ -1,0 +1,7 @@
+handler: services/contracts/handlers/create-special-rent-handler.createSpecialRent
+events:
+  - http:
+      path: portal/contracts/specialRent
+      method: post
+      authorizer: authorizeAdmin
+      cors: true

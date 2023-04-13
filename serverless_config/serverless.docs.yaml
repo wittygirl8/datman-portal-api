@@ -1,0 +1,82 @@
+ documentation:
+    version: '0.1'
+    title: Datman Wallet Api
+    description: Here are the list of datman wallet api.
+    servers:
+      - url: https://l5rx5bvji5.execute-api.eu-west-1.amazonaws.com/dev
+      - url: http://localhost:3000
+    models:
+      - name: accountEnroll
+        description: accountEnroll body
+        contentType: application/json
+        requestBody:
+          description: Enroll the new customer to provider.
+        schema: ${file(documentations/model/wallet/account_enroll_reqbody.json)}
+      - name: accountEnroll_res_200
+        contentType: application/json
+        requestBody:
+          description: Enroll the new customer to provider.
+      #   schema: ${file(documentations/model/wallet/account_enroll_res_200.json)}
+      # - name: topup
+      #   contentType: application/json
+      #   requestBody:
+      #     description: topup.
+      #   schema: ${file(documentations/model/wallet/topup_reqbody.json)}
+      # - name: topup_res_200
+      #   contentType: application/json
+      #   requestBody:
+      #     description: topup.
+      #   schema: ${file(documentations/model/wallet/topup_res_200.json)}
+      # - name: refund
+      #   contentType: application/json
+      #   requestBody:
+      #     description: topup.
+      #   schema: ${file(documentations/model/wallet/refund_reqbody.json)}
+      # - name: refund_res_200
+      #   contentType: application/json
+      #   requestBody:
+      #     description: topup.
+      #   schema: ${file(documentations/model/wallet/refund_res_200.json)}
+      # - name: withdraw
+      #   schema: ${file(documentations/model/wallet/withdraw_reqbody.json)}
+      # - name: withdraw_res_200
+      #   contentType: application/json
+      #   requestBody:
+      #     description: topup.
+      #   schema: ${file(documentations/model/wallet/withdraw_res_200.json)}
+
+      - name: wallet_registration_req_body
+        schema: ${file(serverless_config/wallet/sc_rq_body_registration.json)}
+      - name: wallet_registration_res_200
+        schema: ${file(serverless_config/wallet/sc_res_200_registration.json)} 
+
+      - name: wallet_balance_res_200
+        schema: ${file(serverless_config/wallet/sc_res_200_balance.json)}
+
+      - name: pay
+        schema: ${file(serverless_config/wallet/sc_rq_body_payment.json)}     
+
+      - name: pay_res_200
+        schema: ${file(serverless_config/wallet/sc_res_200_topup.json)}     
+
+      - name: refund
+        schema: ${file(serverless_config/wallet/sc_rq_body_refund.json)}     
+
+      - name: refund_res_200
+        schema: ${file(serverless_config/wallet/sc_res_200_topup.json)}     
+
+      - name: wallet_topup_req_body
+        schema: ${file(serverless_config/wallet/sc_rq_body_topup.json)} 
+
+      - name: wallet_topup_res_200
+        schema: ${file(serverless_config/wallet/sc_res_200_topup.json)} 
+
+      - name: wallet_tx_history_res_200
+        schema: ${file(serverless_config/wallet/sc_res_200_tx_history.json)} 
+
+      # - name: wallet_topup_res_200
+      #   schema: ${file()} 
+
+      # - name: wallet_topup_res_200
+      #   schema: ${file()}                          
+                           

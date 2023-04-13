@@ -1,0 +1,30 @@
+handler: services/wallet/handler.balance
+events:
+  - http:
+      path: wallet/balance
+      method: get
+      documentation:
+          description: Wallet registration with Datman.
+          queryParams:
+            - name: shopper_refrence
+              required: true
+              description: provide the shopper refrence
+              schema:
+                type: string
+          requestHeaders:
+              - name: api_key
+                description: "Datman Access key"
+                required: true
+                schema:
+                  type: string
+          methodResponses:
+            - statusCode: 200
+              responseBody:
+                description: "Returns the current balance of wallet"
+              responseModels:
+                application/json: wallet_balance_res_200                            
+  - schedule: 
+      rate: rate(2 minutes)
+      enabled: ${self:custom.enableKeepWarm}
+      input:
+        keep-warm: true

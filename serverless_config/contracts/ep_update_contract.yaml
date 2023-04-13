@@ -1,0 +1,8 @@
+handler: services/contracts/handlers/update-contract-handler.updateContract
+events:
+  - http:
+      path: portal/contracts
+      method: put
+      authorizer: authorizeAdmin
+      cors: true
+       

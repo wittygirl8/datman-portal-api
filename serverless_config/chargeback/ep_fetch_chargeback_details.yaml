@@ -1,0 +1,7 @@
+handler: services/chargeback/handlers/fetch-chargeback-details-handlers.fetchChargebackDetails
+events:
+  - http:
+      path: portal/chargebacks/fetchDetails
+      method: post
+      authorizer: authorizeAdmin
+      cors: true

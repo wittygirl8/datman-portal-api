@@ -1,0 +1,7 @@
+handler: services/reports/handlers/generate-report-balance-handler.generateReportBalance
+events:
+- http:
+    path: portal/reports/balance
+    method: post
+    # authorizer: authorizeAdmin
+    cors: true

@@ -1,0 +1,7 @@
+handler: services/chargeback/handlers/search-chargeback-transaction-handlers.searchChargeBackTransactions
+events:
+  - http:
+      path: portal/chargebacks/searchTxn
+      method: post
+      authorizer: authorizeAdmin
+      cors: true

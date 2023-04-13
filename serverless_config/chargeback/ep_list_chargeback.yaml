@@ -1,0 +1,8 @@
+handler: services/chargeback/handlers/list-chargebacks-handler.chargeBackList
+events:
+  - http:
+      path: portal/chargebacks
+      method: post
+      authorizer: authorize 
+      cors: true
+      

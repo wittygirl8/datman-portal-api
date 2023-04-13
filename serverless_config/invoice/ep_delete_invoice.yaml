@@ -1,0 +1,7 @@
+handler: services/invoice/handler/delete-invoice-handler.deleteInvoice
+events:
+- http:
+    path: portal/invoice
+    method: delete
+    authorizer: authorizeSuperAdmin
+    cors: true

@@ -1,0 +1,7 @@
+handler: services/withdrawals/handlers/delete-withdrawal-not-batched-handler.deleteNotBatchedWithdrawals
+events:
+  - http:
+      path: portal/withdrawals/notBatched
+      method: delete
+      authorizer: authorizeSuperAdmin
+      cors: true

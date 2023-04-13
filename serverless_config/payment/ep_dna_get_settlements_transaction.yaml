@@ -1,0 +1,7 @@
+handler: services/payments/handlers/get-dna-settlement-transaction-handler.getDnaTransactions
+events:
+- http:
+    path: portal/dna_transactions
+    method: post
+    authorizer: authorize
+    cors: true

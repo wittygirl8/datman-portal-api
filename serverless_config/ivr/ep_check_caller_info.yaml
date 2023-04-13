@@ -1,0 +1,6 @@
+handler: services/ivr/handlers/caller-info-handler.checkCallerInfo
+events:
+  - http:
+      path: portal/ivr/check-caller-info
+      method: post
+      cors: true

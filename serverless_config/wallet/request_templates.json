@@ -1,0 +1,8 @@
+{
+    "type": "WALLET",
+   "purchaser": {
+       "refrence": "PR-ksdkjfnsdjkjsnf"
+   },
+   "amount": "20",
+   "currency": "GBP"
+}

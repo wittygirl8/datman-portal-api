@@ -1,0 +1,5 @@
+handler: services/ivr/handlers/bank-update-demo-handler.bankUpdateDemo
+events:
+  - http:
+      path: portal/ivr/bank-update-demo
+      method: post 

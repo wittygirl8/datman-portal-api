@@ -1,0 +1,6 @@
+handler: services/auths/handler.authorize_reseller
+events:
+  - http:
+      path: authorizeReseller
+      method: post
+      cors: true

@@ -1,0 +1,7 @@
+handler: services/invoice/handler/update-invoice-handler.markPaidInvoice
+events:
+- http:
+    path: portal/invoice
+    method: put
+    authorizer: authorizeSuperAdmin
+    cors: true

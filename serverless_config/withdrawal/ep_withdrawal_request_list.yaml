@@ -1,0 +1,10 @@
+handler: services/withdrawals/handlers/withdrawal-request-list-handler.withdrawalRequestList
+events:
+  - http:
+      path: portal/withdrawalsV2
+      method: post
+      authorizer:
+        name: authorize
+        resultTtlInSeconds: 0
+        identityValidationExpression: .*
+      cors: true

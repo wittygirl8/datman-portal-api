@@ -1,0 +1,24 @@
+{
+    "definitions": {},
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "title": "account enroll response 200",
+    "required": [
+        "status",
+        "account_api_key"
+    ],
+    "properties": {
+        "status": {
+            "type": "string",
+            "title": "Staus of response",
+            "pattern": "^(.*)$",
+            "example": "ok"
+        },
+        "account_api_key": {
+            "type": "string",
+            "title": "Api key for associated customer",
+            "pattern": "^(.*)$",
+            "example": "acct_f2421432f38fc74268abf745fa47ea6bc7d4b699e96160a330ac1d154a8920c5"
+        }
+    }
+}

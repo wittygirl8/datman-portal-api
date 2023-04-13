@@ -1,0 +1,10 @@
+handler: services/payments/handlers/get-large-payments-handler.getLargePayments
+events:
+  - http:
+      path: portal/payments/large
+      method: post
+      authorizer:
+        name: authorizeAdmin
+        resultTtlInSeconds: 0
+        identityValidationExpression: .*
+      cors: true

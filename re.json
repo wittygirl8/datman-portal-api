@@ -1,0 +1,32 @@
+err null
+data {
+  IsTruncated: false,
+  Contents: [
+    {
+      Key: 'pedu/',
+      LastModified: 2019-12-16T12:21:45.000Z,
+      ETag: '"d41d8cd98f00b204e9800998ecf8427e"',
+      Size: 0,
+      StorageClass: 'STANDARD'
+    },
+    {
+      Key: 'pedu/CURRICULUM VITAE.docx',
+      LastModified: 2019-12-16T12:22:03.000Z,
+      ETag: '"a15eab791a37c052d55097c65dd1c374"',
+      Size: 16543,
+      StorageClass: 'STANDARD'
+    },
+    {
+      Key: 'pedu/RRC_ACT_APP_613805_285955(1).PDF',
+      LastModified: 2019-12-16T12:22:04.000Z,
+      ETag: '"232310b6d5a71cbf5183c39b10b55661"',
+      Size: 140262,
+      StorageClass: 'STANDARD'
+    }
+  ],
+  Name: 'verify.datman.je',
+  Prefix: 'pedu/',
+  MaxKeys: 200,
+  CommonPrefixes: [],
+  KeyCount: 3
+}

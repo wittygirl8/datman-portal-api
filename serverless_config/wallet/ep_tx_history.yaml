@@ -1,0 +1,30 @@
+handler: services/wallet/handler.txHistory
+events:
+  - http:
+      path: wallet/txhistory
+      method: get
+      documentation:
+          description: Wallet registration with Datman.
+          queryParams:
+            - name: shopper_refrence
+              required: true
+              description: provide the shopper refrence
+              schema:
+                type: string
+          requestHeaders:
+              - name: api_key
+                description: "Datman Access key"
+                required: true
+                schema:
+                  type: string
+          methodResponses:
+            - statusCode: 200
+              responseBody:
+                description: "Returns the list of transactions made via wallet"
+              responseModels:
+                application/json: wallet_tx_history_res_200                            
+  - schedule: 
+      rate: rate(2 minutes)
+      enabled: ${self:custom.enableKeepWarm}
+      input:
+        keep-warm: true

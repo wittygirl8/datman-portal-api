@@ -1,0 +1,8 @@
+handler: services/mypay/dna-pay-by-link-handler.main
+# handler: services/mypay/dna-handler.main
+events:
+    - http:
+          path: portal/dna-hosted-form
+          method: get
+          authorizer: authorize
+          cors: true

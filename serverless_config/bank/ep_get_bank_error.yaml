@@ -1,0 +1,7 @@
+handler: services/bank/handlers/get-bank-errors-handler.getBankError
+events:
+  - http:
+      path: portal/bank/errors
+      method: get
+      authorizer: authorizeAdmin
+      cors: true

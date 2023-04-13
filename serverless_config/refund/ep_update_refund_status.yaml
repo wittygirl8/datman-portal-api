@@ -1,0 +1,7 @@
+handler: services/refund/handler/update-refund-status-handler.processRefundStatus
+events:
+  - http:
+      path: portal/refund/status
+      method: put
+      authorizer: authorizeAdmin
+      cors: true

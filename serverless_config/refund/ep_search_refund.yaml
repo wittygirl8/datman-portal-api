@@ -1,0 +1,7 @@
+handler: services/refund/handler/search-refund-handler.searchRefund
+events:
+  - http:
+      path: portal/refund/status/search
+      method: post
+      authorizer: authorizeAdmin
+      cors: true

@@ -1,0 +1,8 @@
+handler: services/customer/handler.fetchAllFeeTierInfo
+events:
+  - http:
+      path: portal/customer/fee-tier
+      method: get
+      authorizer: authorize 
+      cors: true
+

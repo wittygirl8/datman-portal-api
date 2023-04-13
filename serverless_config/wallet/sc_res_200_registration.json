@@ -1,0 +1,23 @@
+{
+    "definitions": {},
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "title": "Wallet registraion at status code 200",
+    "required": [
+        "status"
+    ],
+    "properties": {
+        "status": {
+            "type": "string",
+            "title": "",
+            "pattern": "^(.*)$",
+            "example": "ok"
+        },
+        "wallet_id": {
+            "type": "string",
+            "title": "",
+            "pattern": "^(.*)$",
+            "example": "wi_1234"
+        }
+    }
+}

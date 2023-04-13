@@ -1,0 +1,6 @@
+handler: services/auths/handler.authorize_admin
+events:
+  - http:
+      path: authorizeAdmin
+      method: post
+      cors: true

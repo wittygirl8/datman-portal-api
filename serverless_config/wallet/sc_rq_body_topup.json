@@ -1,0 +1,77 @@
+{
+    "definitions": {},
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "title": "The Root Schema",
+    "properties": {
+        "shopper": {
+            "type": "object",
+            "title": "The Shopper Schema",
+            "required": [
+                "refrence",
+                "email",
+                "phone",
+                "first_name",
+                "last_name"
+            ],
+            "properties": {
+                "refrence": {
+                    "type": "string",
+                    "title": "The Refrence Schema",
+                    "default": "",
+                    "example": "1b671a64-40d5-491e-99b0-da01ff1f3341",
+                    "pattern": "^(.*)$"
+                },
+                "email": {
+                    "type": "string",
+                    "title": "The Email Schema",
+                    "default": "",
+                    "example": "foo@datman.com",
+                    "pattern": "^(.*)$"
+                },
+                "phone": {
+                    "type": "string",
+                    "title": "The Phone Schema",
+                    "default": "",
+                    "example": "4471234567890",
+                    "pattern": "^(.*)$"
+                },
+                "first_name": {
+                    "type": "string",
+                    "title": "The First_name Schema",
+                    "default": "",
+                    "example": "foo",
+                    "pattern": "^(.*)$"
+                },
+                "last_name": {
+                    "type": "string",
+                    "title": "The Last_name Schema",
+                    "default": "",
+                    "example": "bar",
+                    "pattern": "^(.*)$"
+                }
+            }
+        },
+        "amount": {
+            "type": "string",
+            "title": "The Refrence Schema",
+            "default": "",
+            "example": "20.00",
+            "pattern": "^(.*)$"
+        },
+        "currency": {
+            "type": "string",
+            "title": "The Refrence Schema",
+            "default": "",
+            "example": "GBP",
+            "pattern": "^(.*)$"
+        },
+        "internal_card_payment": {
+            "type": "string",
+            "title": "The Refrence Schema",
+            "default": "",
+            "example": "1234567",
+            "pattern": "^(.*)$"
+        }
+    }
+}

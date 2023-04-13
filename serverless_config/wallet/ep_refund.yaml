@@ -1,0 +1,34 @@
+handler: services/wallet/handler.refund
+events:
+  - http:
+      path: refund
+      method: post
+      documentation:
+          description: Create a refund.
+          # queryParams:
+          #   - name: do
+          #     required: true
+          #     description: api or form
+          #     schema:
+          #       type: string
+          requestHeaders:
+              - name: api_key
+                description: "Datman Access key"
+                required: true
+                schema:
+                  type: string
+          requestBody:
+            description: Details need to process the withdrawal for specific account.
+          requestModels:
+            application/json: refund
+          methodResponses:
+            - statusCode: 200
+              responseBody:
+                description: "Returns the wallet_id"
+              responseModels:
+                application/json: refund_res_200                
+  - schedule: 
+      rate: rate(2 minutes)
+      enabled: ${self:custom.enableKeepWarm}
+      input:
+        keep-warm: true    

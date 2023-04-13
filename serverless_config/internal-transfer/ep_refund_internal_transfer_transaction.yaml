@@ -1,0 +1,36 @@
+handler: services/internal-transfer/handler.refundInternalTransferTransaction
+events:
+- http:
+    path: portal/internal-transfer/refund
+    method: post
+    authorizer: authorize
+    cors: true
+  #     documentation:
+  #         description: create a paymet.
+  #         # queryParams:
+  #         #   - name: do
+  #         #     required: true
+  #         #     description: api or form
+  #         #     schema:
+  #         #       type: string
+  #         requestHeaders:
+  #             - name: api_key
+  #               description: "Datman Access key"
+  #               required: true
+  #               schema:
+  #                 type: string
+  #         requestBody:
+  #           description: Details need to process the withdrawal for specific account.
+  #         requestModels:
+  #           application/json: pay
+  #         methodResponses:
+  #           - statusCode: 200
+  #             responseBody:
+  #               description: "Returns the wallet_id"
+  #             responseModels:
+  #               application/json: pay_res_200                
+  # - schedule: 
+  #     rate: rate(2 minutes)
+  #     enabled: ${self:custom.enableKeepWarm}
+  #     input:
+  #       keep-warm: true    

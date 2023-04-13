@@ -1,0 +1,539 @@
+openapi: 3.0.0
+components:
+  schemas:
+    accountEnroll:
+      type: object
+      title: account enroll Request
+      required:
+        - firstname
+        - lastname
+        - email
+        - client_ref_id
+        - account_type
+        - phone
+      properties:
+        firstname:
+          type: string
+          title: Frist name of the user
+          pattern: ^(.*)$
+          example: Fedrick
+        lastname:
+          type: string
+          title: Last name of the user
+          pattern: ^(.*)$
+          example: Rich
+        email:
+          type: string
+          title: Email of the user
+          pattern: ^(.*)$
+          example: Fedrick@xyz.com
+        phone:
+          type: string
+          title: phone no. of the user
+          pattern: ^(.*)$
+          example: 07123456789
+        client_ref_id:
+          type: string
+          title: Unique refrence associated for user
+          pattern: ^(.*)$
+          example: I_AM_VERY_UNIQUE_REF_PER_USER
+        account_type:
+          type: string
+          title: 'Account type of user, END_USER/INDIVIDUAL'
+          pattern: ^(.*)$
+          example: END_USER
+    wallet_registration_req_body:
+      type: object
+      title: wallet registration
+      required:
+        - signature
+        - fname
+        - lname
+        - email
+        - refrence_id
+      properties:
+        fname:
+          type: string
+          title: Frist name of the user
+          pattern: ^(.*)$
+          example: Fedrick
+        lname:
+          type: string
+          title: Last name of the user
+          pattern: ^(.*)$
+          example: Rich
+        email:
+          type: string
+          title: Email of the user
+          pattern: ^(.*)$
+          example: Fedrick@xyz.com
+        phone:
+          type: string
+          title: phone no. of the user
+          pattern: ^(.*)$
+          example: 07123456789
+        refrence_id:
+          type: string
+          title: Unique refrence associated for user
+          pattern: ^(.*)$
+          example: I_AM_VERY_UNIQUE_REF_PER_USER
+    wallet_registration_res_200:
+      type: object
+      title: Wallet registraion at status code 200
+      required:
+        - status
+      properties:
+        status:
+          type: string
+          title: ''
+          pattern: ^(.*)$
+          example: ok
+        wallet_id:
+          type: string
+          title: ''
+          pattern: ^(.*)$
+          example: wi_1234
+    wallet_balance_res_200:
+      type: object
+      title: The Root Schema
+      required:
+        - balance
+        - currency
+      properties:
+        balance:
+          type: integer
+          title: The Balance Schema
+          default: 0
+        currency:
+          type: string
+          title: The Currency Schema
+          default: ''
+          pattern: ^(.*)$
+    pay:
+      type: object
+      title: The Root Schema
+      required:
+        - type
+        - purchaser
+        - amount
+        - currency
+      properties:
+        type:
+          type: string
+          title: The Type Schema
+          default: ''
+          pattern: ^(.*)$
+        purchaser:
+          type: object
+          title: The Purchaser Schema
+          required:
+            - refrence
+            - first_name
+            - last_name
+            - email
+          properties:
+            refrence:
+              type: string
+              title: The Refrence Schema
+              default: ''
+              pattern: ^(.*)$
+            first_name:
+              type: string
+              title: The First_name Schema
+              default: ''
+              pattern: ^(.*)$
+            last_name:
+              type: string
+              title: The Last_name Schema
+              default: ''
+              pattern: ^(.*)$
+            email:
+              type: string
+              title: The Email Schema
+              default: ''
+              pattern: ^(.*)$
+        amount:
+          type: string
+          title: The Amount Schema
+          default: ''
+          pattern: ^(.*)$
+        currency:
+          type: string
+          title: The Currency Schema
+          default: ''
+          pattern: ^(.*)$
+    pay_res_200:
+      type: object
+      title: The Root Schema
+      required:
+        - status
+        - transaction_id
+      properties:
+        status:
+          type: string
+          title: The Status Schema
+          default: ''
+          pattern: ^(.*)$
+        transaction_id:
+          type: string
+          title: The Transaction_id Schema
+          default: ''
+          pattern: ^(.*)$
+    refund:
+      type: object
+      title: The Root Schema
+      required:
+        - type
+        - purchaser
+        - amount
+        - currency
+      properties:
+        type:
+          type: string
+          title: The Type Schema
+          default: ''
+          pattern: ^(.*)$
+        purchaser:
+          type: object
+          title: The Purchaser Schema
+          required:
+            - refrence
+            - first_name
+            - last_name
+            - email
+          properties:
+            refrence:
+              type: string
+              title: The Refrence Schema
+              default: ''
+              pattern: ^(.*)$
+            first_name:
+              type: string
+              title: The First_name Schema
+              default: ''
+              pattern: ^(.*)$
+            last_name:
+              type: string
+              title: The Last_name Schema
+              default: ''
+              pattern: ^(.*)$
+            email:
+              type: string
+              title: The Email Schema
+              default: ''
+              pattern: ^(.*)$
+        amount:
+          type: string
+          title: The Amount Schema
+          default: ''
+          pattern: ^(.*)$
+        currency:
+          type: string
+          title: The Currency Schema
+          default: ''
+          pattern: ^(.*)$
+    refund_res_200:
+      type: object
+      title: The Root Schema
+      required:
+        - status
+        - transaction_id
+      properties:
+        status:
+          type: string
+          title: The Status Schema
+          default: ''
+          pattern: ^(.*)$
+        transaction_id:
+          type: string
+          title: The Transaction_id Schema
+          default: ''
+          pattern: ^(.*)$
+    wallet_topup_req_body:
+      type: object
+      title: The Root Schema
+      properties:
+        shopper:
+          type: object
+          title: The Shopper Schema
+          required:
+            - refrence
+            - email
+            - phone
+            - first_name
+            - last_name
+          properties:
+            refrence:
+              type: string
+              title: The Refrence Schema
+              default: ''
+              example: 1b671a64-40d5-491e-99b0-da01ff1f3341
+              pattern: ^(.*)$
+            email:
+              type: string
+              title: The Email Schema
+              default: ''
+              example: foo@datman.com
+              pattern: ^(.*)$
+            phone:
+              type: string
+              title: The Phone Schema
+              default: ''
+              example: '4471234567890'
+              pattern: ^(.*)$
+            first_name:
+              type: string
+              title: The First_name Schema
+              default: ''
+              example: foo
+              pattern: ^(.*)$
+            last_name:
+              type: string
+              title: The Last_name Schema
+              default: ''
+              example: bar
+              pattern: ^(.*)$
+        amount:
+          type: string
+          title: The Refrence Schema
+          default: ''
+          example: '20.00'
+          pattern: ^(.*)$
+        currency:
+          type: string
+          title: The Refrence Schema
+          default: ''
+          example: GBP
+          pattern: ^(.*)$
+        internal_card_payment:
+          type: string
+          title: The Refrence Schema
+          default: ''
+          example: '1234567'
+          pattern: ^(.*)$
+    wallet_topup_res_200:
+      type: object
+      title: The Root Schema
+      required:
+        - status
+        - transaction_id
+      properties:
+        status:
+          type: string
+          title: The Status Schema
+          default: ''
+          pattern: ^(.*)$
+        transaction_id:
+          type: string
+          title: The Transaction_id Schema
+          default: ''
+          pattern: ^(.*)$
+    wallet_tx_history_res_200:
+      type: object
+      title: The Root Schema
+      required:
+        - status
+        - data
+      properties:
+        status:
+          type: string
+          title: The Status Schema
+          default: ''
+          pattern: ^(.*)$
+        data:
+          type: object
+          title: The Data Schema
+          required:
+            - balance
+            - transactions
+          properties:
+            balance:
+              type: integer
+              title: The Balance Schema
+              default: 0
+            transactions:
+              type: array
+              title: The Transactions Schema
+              items:
+                type: object
+                title: The Items Schema
+                required:
+                  - amount
+                  - currency
+                  - merchant
+                properties:
+                  amount:
+                    type: integer
+                    title: The Amount Schema
+                    default: 0
+                  currency:
+                    type: string
+                    title: The Currency Schema
+                    default: ''
+                    pattern: ^(.*)$
+                  merchant:
+                    type: string
+                    title: The Merchant Schema
+                    default: ''
+                    pattern: ^(.*)$
+info:
+  title: Datman Wallet Api
+  description: Here are the list of datman wallet api.
+  version: '0.1'
+paths:
+  /wallet/topup:
+    post:
+      operationId: wallet_topup
+      description: Wallet registration with Datman.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/wallet_topup_req_body'
+        description: Details need to process the top for specific account.
+      parameters:
+        - name: api_key
+          in: header
+          description: Datman Access key
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Returns the wallet_id
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/wallet_topup_res_200'
+  /wallet/txhistory:
+    get:
+      operationId: wallet_history
+      description: Wallet registration with Datman.
+      parameters:
+        - name: shopper_refrence
+          in: query
+          description: provide the shopper refrence
+          required: true
+          allowEmptyValue: false
+          schema:
+            type: string
+        - name: api_key
+          in: header
+          description: Datman Access key
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Returns the list of transactions made via wallet
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/wallet_tx_history_res_200'
+  /wallet/balance:
+    get:
+      operationId: wallet_balance
+      description: Wallet registration with Datman.
+      parameters:
+        - name: shopper_refrence
+          in: query
+          description: provide the shopper refrence
+          required: true
+          allowEmptyValue: false
+          schema:
+            type: string
+        - name: api_key
+          in: header
+          description: Datman Access key
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Returns the current balance of wallet
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/wallet_balance_res_200'
+  /refund:
+    post:
+      operationId: refund
+      description: Create a refund.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/refund'
+        description: Details need to process the withdrawal for specific account.
+      parameters:
+        - name: api_key
+          in: header
+          description: Datman Access key
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Returns the wallet_id
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/refund_res_200'
+  /pay:
+    post:
+      operationId: payment
+      description: create a paymet.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/pay'
+        description: Details need to process the withdrawal for specific account.
+      parameters:
+        - name: do
+          in: query
+          description: api or form
+          required: true
+          allowEmptyValue: false
+          schema:
+            type: string
+        - name: api_key
+          in: header
+          description: Datman Access key
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Returns the wallet_id
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/pay_res_200'
+  /pay_final:
+    post:
+      operationId: final_payment
+      description: create a paymet.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/pay'
+        description: Details need to process the withdrawal for specific account.
+      parameters:
+        - name: api_key
+          in: header
+          description: Datman Access key
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Returns the wallet_id
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/pay_res_200'
+servers:
+  - url: 'https://l5rx5bvji5.execute-api.eu-west-1.amazonaws.com/dev'
+  - url: 'http://localhost:3000'

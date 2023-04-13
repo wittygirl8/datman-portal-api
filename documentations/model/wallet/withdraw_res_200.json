@@ -1,0 +1,23 @@
+{
+    "definitions": {},
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "title": "topup response 200",
+    "required": [
+        "status"
+    ],
+    "properties": {
+        "status": {
+            "type": "string",
+            "title": "",
+            "pattern": "^(.*)$",
+            "example": "ok"
+        },
+        "ref": {
+            "type": "string",
+            "title": "",
+            "pattern": "^(.*)$",
+            "example": "api_1234"
+        }
+    }
+}

@@ -1,0 +1,20 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      nodejs: 12
+    commands:
+      - npm install -g serverless
+      - npm ci
+    finally:
+      - echo Installation finished
+  pre_build:
+    commands:
+
+  build:
+    commands:
+      #Deploy all stuff
+      - serverless deploy --region ${AWS_REGION} --config=${DEPLOY_FILE_CONFIG}
+    finally:
+      - echo Build finished

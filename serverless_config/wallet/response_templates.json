@@ -1,0 +1,18 @@
+{
+    "status": "true",    
+    "data": {
+        "balance": 20,
+        "transactions": [
+            {
+                "amount": 1,
+                "currency": "GBP",
+                "merchant": "123"
+            },
+            {
+                "amount": 1,
+                "currency": "GBP",
+                "merchant": "425"
+            }
+        ]    
+    }    
+}

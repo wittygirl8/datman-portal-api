@@ -1,0 +1,45 @@
+{
+    "definitions": {},
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "title": "wallet registration",
+    "required": [
+        "signature",
+        "fname",
+        "lname",
+        "email",
+        "refrence_id"
+    ],
+    "properties": {
+        "fname": {
+            "type": "string",
+            "title": "Frist name of the user",
+            "pattern": "^(.*)$",
+            "example": "Fedrick"
+        },
+        "lname": {
+            "type": "string",
+            "title": "Last name of the user",
+            "pattern": "^(.*)$",
+            "example": "Rich"
+        },
+        "email": {
+            "type": "string",
+            "title": "Email of the user",
+            "pattern": "^(.*)$",
+            "example": "Fedrick@xyz.com"
+        },
+        "phone": {
+            "type": "string",
+            "title": "phone no. of the user",
+            "pattern": "^(.*)$",
+            "example": "07123456789"
+        },
+        "refrence_id": {
+            "type": "string",
+            "title": "Unique refrence associated for user",
+            "pattern": "^(.*)$",
+            "example": "I_AM_VERY_UNIQUE_REF_PER_USER"
+        }
+    }
+}

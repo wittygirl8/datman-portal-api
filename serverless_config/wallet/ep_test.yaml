@@ -1,0 +1,38 @@
+handler: services/wallet/handler.test
+events:
+  - http:
+      path: hey/mytest
+      # path: hey_hey
+      method: get
+      documentation:
+          description: withdraw sabd the amount in customer account, specific to one of the provider.
+          # queryParams:
+          #   - name: do
+          #     required: true
+          #     description: api or form
+          #     schema:
+          #       type: string
+          requestHeaders:
+              - name: api_key
+                description: "Provider Api key"
+                required: true
+                schema:
+                  type: string
+          requestBody:
+            description: Details need to process the withdrawal for specific account.
+          requestModels:
+            application/json: withdraw
+          methodResponses:
+            - statusCode: 200
+              responseBody:
+                description: "A user object along with generated API Keys"
+              responseModels:
+                application/json: withdraw_res_200                
+  - schedule: 
+      rate: rate(2 minutes)
+      enabled: ${self:custom.enableKeepWarm}
+      input:
+        keep-warm: true
+
+constant:
+  pathPrefix: test     

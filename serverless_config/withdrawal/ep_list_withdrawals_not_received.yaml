@@ -1,0 +1,7 @@
+handler: services/withdrawals/handlers/list-withdrawals-not-recieved-handler.payoutNotReceived
+events:
+  - http:
+      path: portal/withdrawals/notReceived
+      method: get
+      authorizer: authorizeAdmin
+      cors: true
